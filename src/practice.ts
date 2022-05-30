@@ -139,3 +139,47 @@ const colors: Color[] = ['red', 'orange'];
 // 일반 객체의 타입의 경우엔 그냥 type을 사용해도 무방합니다. 
 // 사실 객체를 위한 타입을 정의할때 무엇이든 써도 상관 없는데 일관성 있게만 쓰시면 됩니다.
 
+
+// Generics
+// 제너릭(Generics)은 타입스크립트에서 함수, 클래스, interface, type alias 를 사용하게 될 때 여러 종류의 타입에 대하여 호환을 맞춰야 하는 상황에서 사용하는 문법입니다.
+
+// 함수에서 Generics 사용하기
+// 예를 들어서 우리가 객체 A 와 객체 B 를 합쳐주는 merge 라는 함수를 만든다고 가정해봅시다. 
+// 그런 상황에서는 A 와 B 가 어떤 타입이 올 지 모르기 떄문에 이런 상황에서는 any 라는 타입을 쓸 수도 있습니다.
+function merge(a: any, b: any): any {
+  return {
+    ...a,
+    ...b
+  };
+}
+
+const merged = merge({ foo: 1 }, { bar: 1 });
+
+// 그런데, 이렇게 하면 타입 유추가 모두 깨진거나 다름이 없습니다. 결과가 any 라는 것은 즉 merged 안에 무엇이 있는지 알 수 없다는 것 입니다.
+// 이런 상황에 Generics 를 사용하면 됩니다. Generics 는 다음과 같이 사용합니다.
+function merge2<A, B>(a: A, b: B): A & B {
+  return {
+    ...a,
+    ...b
+  };
+}
+
+const merged2 = merge({ foo: 1 }, { bar: 1 });
+
+// interface 에서 Generics 사용하기
+interface Items<T> {
+  list: T[];
+}
+
+const items: Items<string> = {
+  list: ['a', 'b', 'c']
+};
+
+// type 에서 Generics 사용하기
+type Items2<T> = {
+  list: T[];
+};
+
+const item2: Items<string> = {
+  list: ['a', 'b', 'c']
+};

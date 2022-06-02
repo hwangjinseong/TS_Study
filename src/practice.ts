@@ -165,8 +165,7 @@ function merge2<A, B>(a: A, b: B): A & B {
 }
 
 const merged2 = merge({ foo: 1 }, { bar: 1 });
-
-// interface 에서 Generics 사용하기
+// interface 에서 Generics 사용
 interface Items<T> {
   list: T[];
 }
@@ -175,7 +174,7 @@ const items: Items<string> = {
   list: ['a', 'b', 'c']
 };
 
-// type 에서 Generics 사용하기
+// type 에서 Generics 사용
 type Items2<T> = {
   list: T[];
 };

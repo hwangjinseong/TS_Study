@@ -40,7 +40,7 @@ enum Os {
     Ios = 'ios',     // = 10
     Android = 'and'  // = 11
 } // 값을 넣을 수 있다.
-console.log(Os[10]); // = Ios
+// console.log(Os[10]); // = Ios
 console.log(Os['Ios']); // = 10
 
 let myOs: Os;
@@ -48,7 +48,7 @@ myOs = Os.Window
 
 
 // null, undefined
-let a:null = null;
-let b:undefined = undefined;
+let num:null = null;
+let num2:undefined = undefined;
 
 
